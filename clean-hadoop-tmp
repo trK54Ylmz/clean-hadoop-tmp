@@ -48,7 +48,7 @@ unless File.exists?(lockfile)
   dirs_to_delete.each_slice(batch_size) do |b|
     total_deleted = total_deleted += b.length
     puts "Deleting #{b.length} directories in this batch, total so far is #{total_deleted}."
-    `hadoop fs -rm r #{b.join(' ')}`
+    `hadoop fs -rmr #{b.join(' ')}`
   end
 
   puts "Done. #{total_deleted} of #{dirs_to_delete.length} directories deleted."
